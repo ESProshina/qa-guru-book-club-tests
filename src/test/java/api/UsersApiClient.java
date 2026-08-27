@@ -3,6 +3,7 @@ package api;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.specification.ResponseSpecification;
+import models.registration.ExistingUserResponseModel;
 import models.registration.RegistrationBodyModel;
 import models.registration.SuccessfulRegistrationResponseModel;
 import models.user.UpdateUserBodyModel;
