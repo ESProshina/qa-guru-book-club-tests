@@ -1,5 +1,6 @@
 package tests;
 
+import models.clubs.ClubModel;
 import models.clubs.ClubsListResponseModel;
 import org.junit.jupiter.api.Test;
 
