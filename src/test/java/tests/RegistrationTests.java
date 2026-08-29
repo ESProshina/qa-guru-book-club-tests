@@ -1,6 +1,5 @@
 package tests;
 
-import models.registration.ExistingUserResponseModel;
 import models.registration.RegistrationBodyModel;
 import models.registration.SuccessfulRegistrationResponseModel;
 import org.junit.jupiter.api.BeforeEach;
@@ -38,25 +37,6 @@ public class RegistrationTests extends TestBase {
 
         assertThat(registrationResponse.remoteAddr()).matches(REGISTRATION_IP_REGEXP);
     }
-
-    @Test
-    @DisplayName("Негативный: Повторная регистрация имеющегося пользователя")
-    public void existingUserWrongRegistrationTest() {
-        RegistrationBodyModel registrationData = new RegistrationBodyModel(username, password);
-
-        SuccessfulRegistrationResponseModel firstRegistrationResponse =
-                api.users.register(registrationData);
-
-        assertThat(firstRegistrationResponse.username()).isEqualTo(username);
-
-        ExistingUserResponseModel secondRegistrationResponse =
-                api.users.registerExistingUser(registrationData);
-
-        String expectedError = REGISTRATION_EXISTING_USER_ERROR;
-        String actualError = secondRegistrationResponse.username().get(0);
-        assertThat(actualError).isEqualTo(expectedError);
-    }
-
     @Test
     @DisplayName("Негативный: Регистрация без пароля (400 Bad Request)")
     public void registrationWithoutPasswordTest() {

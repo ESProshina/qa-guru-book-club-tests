@@ -7,6 +7,8 @@ import models.login.LoginBodyModel;
 import models.login.SuccessfulLoginResponseModel;
 import models.login.WrongCredentialsLoginResponseModel;
 import models.logout.LogoutBodyModel;
+import models.registration.RegistrationBodyModel;
+import models.registration.model_examples.records.RegistrationResponseModel;
 
 import static io.restassured.RestAssured.given;
 import static specs.login.LoginSpec.loginRequestSpec;
@@ -93,6 +95,30 @@ public class AuthApiClient {
                 .then()
                 .spec(successfulLoginResponseSpec)
                 .extract()
-                .path("access"); // Извлекаем именно access-токен
+                .path("access");
+    }
+
+    @Step("Регистрация нового пользователя")
+    public RegistrationResponseModel register(RegistrationBodyModel registrationBody) {
+        return given(loginRequestSpec)
+                .body(registrationBody)
+                .when()
+                .post("/auth/register/")
+                .then()
+                .statusCode(201)
+                .extract()
+                .as(RegistrationResponseModel.class);
+    }
+
+    @Step("Регистрация нового пользователя с произвольной спецификацией")
+    public Response registerWithSpec(RegistrationBodyModel registrationBody, ResponseSpecification spec) {
+        return given(loginRequestSpec)
+                .body(registrationBody)
+                .when()
+                .post("/auth/register/")
+                .then()
+                .spec(spec)
+                .extract()
+                .response();
     }
 }

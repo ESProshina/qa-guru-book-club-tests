@@ -2,7 +2,7 @@ package tests;
 
 public class TestData {
 
-    public static final String LOGIN_USERNAME = "Ainur";
+    public static final String LOGIN_USERNAME = "Elena";
     public static final String LOGIN_PASSWORD = "123456";
 
     public static final String LOGIN_WRONG_USERNAME = "NonExistentUser123";
@@ -18,9 +18,10 @@ public class TestData {
             "^((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)\\.){3}"
                     + "(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)$";
 
-    public static final String UPDATED_FIRST_NAME = "Ainur_Updated";
-    public static final String UPDATED_LAST_NAME = "QA_Engineer";
-    public static final String UPDATED_EMAIL = "ainur_updated@example.com";
+    public static final String UPDATED_FIRST_NAME = "Elena";
+    public static final String UPDATED_LAST_NAME = "Black";
+    public static final String UPDATED_EMAIL = "elena.black@example.com";
+    public static final String UPDATED_FULL_NAME = "Elena Black";
     public static final String INVALID_EMAIL = "invalid_email_format";
 
     public static final String INVALID_EMAIL_ERROR = "Enter a valid email address.";
