@@ -24,17 +24,20 @@ public class UpdateUserTests extends TestBase {
     @Test
     @DisplayName("Позитивный: Успешное обновление имени, фамилии и email")
     public void successfulUpdateUserTest() {
+        // Используем уникальный email для избежания конфликтов
+        String uniqueEmail = "elena_" + System.currentTimeMillis() + "@example.com";
+
         UpdateUserBodyModel updateData = new UpdateUserBodyModel(
                 UPDATED_FIRST_NAME,
                 UPDATED_LAST_NAME,
-                UPDATED_EMAIL
+                uniqueEmail
         );
 
         UserResponseModel response = api.users.updateUser(accessToken, updateData);
 
         assertThat(response.firstName()).isEqualTo(UPDATED_FIRST_NAME);
         assertThat(response.lastName()).isEqualTo(UPDATED_LAST_NAME);
-        assertThat(response.email()).isEqualTo(UPDATED_EMAIL);
+        assertThat(response.email()).isEqualTo(uniqueEmail);
     }
 
     @Test
