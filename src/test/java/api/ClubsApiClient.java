@@ -4,14 +4,14 @@ import io.qameta.allure.Step;
 import models.clubs.ClubsListResponseModel;
 
 import static io.restassured.RestAssured.given;
-import static specs.clubs.ClubsSpec.clubsRequestSpec;
+import static specs.BaseSpec.baseRequestSpec;
 import static specs.clubs.ClubsSpec.successfulClubsListResponseSpec;
 
 public class ClubsApiClient {
 
     @Step("Получение списка клубов GET /clubs/")
     public ClubsListResponseModel getClubs() {
-        return given(clubsRequestSpec)
+        return given(baseRequestSpec)
                 .when()
                 .get("/clubs/")
                 .then()

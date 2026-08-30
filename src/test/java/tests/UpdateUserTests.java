@@ -52,7 +52,6 @@ public class UpdateUserTests extends TestBase {
 
         assertThat(response.path("email[0]").toString()).isEqualTo(INVALID_EMAIL_ERROR);
     }
-
     @Test
     @DisplayName("Негативный: Обновление пользователя без токена авторизации (401 Unauthorized)")
     public void updateUserWithoutTokenTest() {
@@ -61,9 +60,6 @@ public class UpdateUserTests extends TestBase {
                 UPDATED_LAST_NAME,
                 UPDATED_EMAIL
         );
-
-        // Передаем null вместо EMPTY_STRING
-        // Тогда заголовок Authorization вообще не будет добавлен
         var response = api.users.updateUserWithSpec(null, updateData, userResponse401Spec);
 
         assertThat(response.path("detail").toString()).isEqualTo(UNAUTHORIZED_ERROR);

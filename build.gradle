@@ -16,7 +16,6 @@ dependencies {
     testImplementation 'org.assertj:assertj-core:3.25.3'
     testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.17.0'
 
-    // Allure и генератор данных Datafaker
     testImplementation 'io.qameta.allure:allure-rest-assured:2.25.0'
     testImplementation 'net.datafaker:datafaker:2.1.0'
 
