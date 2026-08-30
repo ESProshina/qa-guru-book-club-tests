@@ -21,6 +21,7 @@ public class LogoutTests extends TestBase {
         LogoutBodyModel logoutBody = new LogoutBodyModel(refreshToken);
         api.auth.logout(logoutBody);
     }
+
     @Test
     @DisplayName("Негативный: Разлогин с недействительным refresh-токеном (401 Unauthorized)")
     public void logoutWithInvalidTokenTest() {
@@ -28,9 +29,10 @@ public class LogoutTests extends TestBase {
 
         var response = api.auth.logoutWithSpec(logoutBody, logoutResponse401Spec);
 
-        assertThat(response.path("detail").toString()).isEqualTo("Token is invalid");
+        assertThat(response.path("detail").toString()).isEqualTo(INVALID_TOKEN_ERROR);
         assertThat(response.path("code").toString()).isEqualTo("token_not_valid");
     }
+
     @Test
     @DisplayName("Негативный: Разлогин с пустым refresh-токеном (400 Bad Request)")
     public void logoutWithEmptyTokenTest() {

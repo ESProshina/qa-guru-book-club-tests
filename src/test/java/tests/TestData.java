@@ -11,7 +11,8 @@ public class TestData {
     public static final String FIELD_REQUIRED_ERROR = "This field may not be blank.";
 
     public static final String INVALID_REFRESH_TOKEN = "invalid_refresh_token_12345";
-    public static final String INVALID_TOKEN_ERROR = "Token is invalid or expired";
+    public static final String INVALID_TOKEN_ERROR = "Token is invalid";
+    public static final String INVALID_TOKEN_CODE = "token_not_valid";
 
     public static final String LOGIN_TOKEN_PREFIX = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
     public static final String REGISTRATION_IP_REGEXP =

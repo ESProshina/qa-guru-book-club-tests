@@ -24,7 +24,6 @@ public class UpdateUserTests extends TestBase {
     @Test
     @DisplayName("Позитивный: Успешное обновление имени, фамилии и email")
     public void successfulUpdateUserTest() {
-        // Используем уникальный email для избежания конфликтов
         String uniqueEmail = "elena_" + System.currentTimeMillis() + "@example.com";
 
         UpdateUserBodyModel updateData = new UpdateUserBodyModel(
@@ -63,7 +62,9 @@ public class UpdateUserTests extends TestBase {
                 UPDATED_EMAIL
         );
 
-        var response = api.users.updateUserWithSpec(EMPTY_STRING, updateData, userResponse401Spec);
+        // Передаем null вместо EMPTY_STRING
+        // Тогда заголовок Authorization вообще не будет добавлен
+        var response = api.users.updateUserWithSpec(null, updateData, userResponse401Spec);
 
         assertThat(response.path("detail").toString()).isEqualTo(UNAUTHORIZED_ERROR);
     }
