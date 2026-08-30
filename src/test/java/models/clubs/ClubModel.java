@@ -2,9 +2,6 @@ package models.clubs;
 
 import java.util.List;
 
-/**
- * Модель клуба в ответе GET /clubs/.
- */
 public record ClubModel(
         Integer id,
         String bookTitle,
