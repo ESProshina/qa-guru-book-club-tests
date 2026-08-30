@@ -103,7 +103,6 @@ public class ClubsTests extends TestBase {
         }
 
         if (response.previous() == null) {
-            // Это первая страница
             assertThat(response.previous()).isNull();
         }
     }
